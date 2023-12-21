@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/bottom_navigation_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pbo_ems/pages/login_page.dart';
 
 void main() {
   runApp(AdminDashboard());
@@ -44,19 +46,28 @@ class AdminDashboard extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(.60),
-          items: const <BottomNavigationBarItem>[
+          showSelectedLabels: false, // hide selected item label
+          showUnselectedLabels: false, // hide unselected item labels
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: SvgPicture.asset('assets/icons/home.svg'),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.edit_document),
+              icon: Image.asset('assets/images/document.png'),
               label: 'Documents',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.logout),
+              icon: GestureDetector(
+                onTap: () {
+                  // Navigate to the login page
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                child: Image.asset('assets/images/Logout.png'),
+              ),
               label: 'Logout',
             ),
           ],
