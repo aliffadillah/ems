@@ -103,7 +103,7 @@ class YourWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Total Kehadiran',
+                            'Total Kehadir',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
