@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/bottom_navigation_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
@@ -17,7 +16,7 @@ class AdminDashboard extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(65.0),
           child: AppBar(
-            backgroundColor: Colors.grey[400], // Set the background color
+            backgroundColor: Colors.grey[400],
             leading: Container(
               margin: EdgeInsets.all(8.0),
               padding: EdgeInsets.all(0.0),
@@ -47,8 +46,8 @@ class AdminDashboard extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
-          showSelectedLabels: false, // hide selected item label
-          showUnselectedLabels: false, // hide unselected item labels
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: SvgPicture.asset('assets/icons/home.svg'),
@@ -57,7 +56,6 @@ class AdminDashboard extends StatelessWidget {
             BottomNavigationBarItem(
               icon: GestureDetector(
                 onTap: () {
-                  // Navigate to the login page
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
@@ -70,7 +68,6 @@ class AdminDashboard extends StatelessWidget {
             BottomNavigationBarItem(
               icon: GestureDetector(
                 onTap: () {
-                  // Navigate to the login page
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
@@ -95,9 +92,9 @@ class YourWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.all(16.0), // Set margin for the Text widget
+          margin: EdgeInsets.all(16.0),
           child: Padding(
-            padding: EdgeInsets.all(2.0), // Set padding for the Text widget
+            padding: EdgeInsets.all(2.0),
             child: Text(
               'Analisis Kehadiran',
               style: TextStyle(
@@ -137,15 +134,18 @@ class YourWidget extends StatelessWidget {
                           Column(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(top: 10.0)),
-                              Text('30',
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  '30',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     letterSpacing: 1.84,
-                                  )),
+                                  ),
+                                ),
+                              ),
                             ],
                           )
                         ],
@@ -175,15 +175,19 @@ class YourWidget extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10.0)),
-                            Text('10',
+                            Padding(
+                              padding: EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                '10',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 1.84,
-                                )),
+                                ),
+                              ),
+                            ),
                           ],
                         )
                       ],
@@ -220,15 +224,18 @@ class YourWidget extends StatelessWidget {
                           Column(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(top: 10.0)),
-                              Text('12',
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  '12',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     letterSpacing: 1.84,
-                                  )),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ],
@@ -258,15 +265,18 @@ class YourWidget extends StatelessWidget {
                           Column(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(top: 10.0)),
-                              Text('21',
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  '21',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     letterSpacing: 1.84,
-                                  )),
+                                  ),
+                                ),
+                              ),
                             ],
                           )
                         ],
@@ -279,9 +289,9 @@ class YourWidget extends StatelessWidget {
           ],
         ),
         Container(
-          margin: EdgeInsets.all(16.0), // Set margin for the Text widget
+          margin: EdgeInsets.all(16.0),
           child: Padding(
-            padding: EdgeInsets.all(2.0), // Set padding for the Text widget
+            padding: EdgeInsets.all(2.0),
             child: Text(
               'Manajemen Karyawan Hotel',
               style: TextStyle(
@@ -297,103 +307,121 @@ class YourWidget extends StatelessWidget {
         Column(
           children: [
             Card(
-              child: SizedBox(
-                width: 328,
-                height: 55,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
-                  child: Row(
-                    children: [
-                      // White box inside the card
-                      Container(
-                        width: 55,
-                        height: 55,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(9),
-                          child: Container(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10), // Adjust spacing as needed
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Tambahkan Karyawan',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.84,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+              child: Container(
+                width: 328, // Set the desired width for the ListTile container
+                height: 55, // Set the desired height for the ListTile container
+                child: ListTile(
+                  leading: Container(
+                    width:
+                        55, // Set the desired width for the leading Container
+                    height:
+                        55, // Set the desired height for the leading Container
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Set the desired border radius
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/paper-add.svg',
+                      width: 13, // Set the desired width for the Image
+                      height: 13, // Set the desired height for the Image
+                    ),
                   ),
+                  title: Container(
+                      child: Text(
+                    'Tambahkan Karyawan',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  )),
+                  trailing: Icon(Icons.arrow_forward_ios_outlined),
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Card(
-                  child: SizedBox(
-                    width: 328,
-                    height: 55,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Tambahkan Karyawan',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.84,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 16,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Card(
-                  child: SizedBox(
-                    width: 328,
-                    height: 55,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Tambahkan Karyawan',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.84,
-                            ),
-                          ),
-                        ],
+            Card(
+              child: Container(
+                width: 328, // Set the desired width for the ListTile container
+                height: 55, // Set the desired height for the ListTile container
+                child: ListTile(
+                  leading: Container(
+                    width:
+                        55, // Set the desired width for the leading Container
+                    height:
+                        55, // Set the desired height for the leading Container
+                    decoration: BoxDecoration(
+                      color: Color(0xfffffff),
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Set the desired border radius
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/drawer-add.svg',
+                      width: 13, // Set the desired width for the Image
+                      height: 13, // Set the desired height for the Image
+                    ),
+                  ),
+                  title: Container(
+                      child: Text(
+                    'Tampilkan Data Karyawan',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12.5,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  )),
+                  trailing: Icon(Icons.arrow_forward_ios_outlined),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Card(
+              child: Container(
+                width: 328, // Set the desired width for the ListTile container
+                height: 55, // Set the desired height for the ListTile container
+                child: ListTile(
+                  leading: Container(
+                    width:
+                        55, // Set the desired width for the leading Container
+                    height:
+                        55, // Set the desired height for the leading Container
+                    decoration: BoxDecoration(
+                      color: Color(0xfffffff),
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Set the desired border radius
+                    ),
+                    child: Container(
+                      width: 20,
+                      height: 30,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(),
+                      child: SvgPicture.asset(
+                        'assets/icons/paper-upload.svg',
+                        width: 13, // Set the desired width for the Image
+                        height: 13, // Set the desired height for the Image
                       ),
                     ),
                   ),
+                  title: Container(
+                      child: Text(
+                    'Update Karyawan',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  )),
+                  trailing: Icon(Icons.arrow_forward_ios_outlined),
                 ),
-              ],
+              ),
             ),
           ],
         ),
