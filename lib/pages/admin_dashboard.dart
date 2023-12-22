@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
+import 'package:pbo_ems/pages/tambah_karyawan.dart';
 
 void main() {
   runApp(AdminDashboard());
@@ -61,20 +62,19 @@ class AdminDashboard extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
                   );
                 },
-                child: Image.asset('assets/images/document.png'),
+                child: SvgPicture.asset('assets/icons/vector.svg'),
               ),
-              label: 'Logout',
+              label: 'Document',
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: Image.asset('assets/images/Logout.png'),
-              ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: SvgPicture.asset('assets/icons/login.svg')),
               label: 'Logout',
             ),
           ],
@@ -89,7 +89,7 @@ class YourWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           margin: EdgeInsets.all(16.0),
@@ -305,6 +305,7 @@ class YourWidget extends StatelessWidget {
           ),
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Card(
               child: Container(
@@ -312,19 +313,20 @@ class YourWidget extends StatelessWidget {
                 height: 55, // Set the desired height for the ListTile container
                 child: ListTile(
                   leading: Container(
+                    padding: EdgeInsets.all(10.0),
                     width:
                         55, // Set the desired width for the leading Container
                     height:
                         55, // Set the desired height for the leading Container
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(
                           8.0), // Set the desired border radius
                     ),
                     child: SvgPicture.asset(
                       'assets/icons/paper-add.svg',
-                      width: 13, // Set the desired width for the Image
-                      height: 13, // Set the desired height for the Image
+                      width: 1.0, // Set the desired width for the Image
+                      height: 1.0, // Set the desired height for the Image
                     ),
                   ),
                   title: Container(
@@ -337,7 +339,16 @@ class YourWidget extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_outlined),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TambahKaryawan()),
+                      );
+                    },
+                    child: Icon(Icons.arrow_forward_ios_outlined),
+                  ),
                 ),
               ),
             ),
@@ -350,12 +361,13 @@ class YourWidget extends StatelessWidget {
                 height: 55, // Set the desired height for the ListTile container
                 child: ListTile(
                   leading: Container(
+                    padding: EdgeInsets.all(10.0),
                     width:
                         55, // Set the desired width for the leading Container
                     height:
                         55, // Set the desired height for the leading Container
                     decoration: BoxDecoration(
-                      color: Color(0xfffffff),
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(
                           8.0), // Set the desired border radius
                     ),
@@ -388,12 +400,13 @@ class YourWidget extends StatelessWidget {
                 height: 55, // Set the desired height for the ListTile container
                 child: ListTile(
                   leading: Container(
+                    padding: EdgeInsets.all(10.0),
                     width:
                         55, // Set the desired width for the leading Container
                     height:
                         55, // Set the desired height for the leading Container
                     decoration: BoxDecoration(
-                      color: Color(0xfffffff),
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(
                           8.0), // Set the desired border radius
                     ),
