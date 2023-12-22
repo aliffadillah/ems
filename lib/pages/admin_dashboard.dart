@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/bottom_navigation_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 
 void main() {
@@ -54,8 +55,17 @@ class AdminDashboard extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/images/document.png'),
-              label: 'Documents',
+              icon: GestureDetector(
+                onTap: () {
+                  // Navigate to the login page
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
+                  );
+                },
+                child: Image.asset('assets/images/document.png'),
+              ),
+              label: 'Logout',
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
