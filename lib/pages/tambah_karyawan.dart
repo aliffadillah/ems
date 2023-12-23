@@ -98,9 +98,9 @@ class AddEmployee extends StatelessWidget {
         Center(
           // Wrap the Container with Center
           child: Container(
-            margin: EdgeInsets.all(16.0),
+            margin: EdgeInsets.all(10.0),
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 'Tambahkan Karyawan Baru',
                 textAlign: TextAlign.center,
@@ -123,7 +123,7 @@ class AddEmployee extends StatelessWidget {
                 Card(
                   color: Colors.grey[200],
                   child: SizedBox(
-                    width: 328,
+                    width: 360,
                     height: 500,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +141,7 @@ class AddEmployee extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 325,
+                          width: 350,
                           height: 70,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -166,7 +166,7 @@ class AddEmployee extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 325,
+                          width: 350,
                           height: 70,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -272,15 +272,16 @@ class AddEmployee extends StatelessWidget {
                               },
                               child: Text(
                                 'Tetap',
-                                style: TextStyle(fontSize: 13.5),
+                                style: TextStyle(fontSize: 14),
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
                                   foregroundColor: Colors.black,
-                                  fixedSize: Size(87, 42),
+                                  fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
-                                    side: BorderSide(color: Colors.black),
+                                    side: BorderSide(
+                                        color: Colors.black, width: 1.0),
                                   ) // Set the border radius here
                                   ),
                             ),
@@ -295,17 +296,18 @@ class AddEmployee extends StatelessWidget {
                               },
                               child: Text(
                                 'Kontrak',
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 13),
                               ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors
                                     .white, // Set the background color to black
                                 foregroundColor:
                                     Colors.black, // Set the text color to white
-                                fixedSize: Size(87, 42),
+                                fixedSize: Size(95, 42),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide(color: Colors.black),
+                                  side: BorderSide(
+                                      color: Colors.black, width: 1.0),
                                 ), // Set the size here
                                 // Set the border color and width
                               ),
@@ -320,14 +322,14 @@ class AddEmployee extends StatelessWidget {
                               },
                               child: Text(
                                 'Magang',
-                                style: TextStyle(fontSize: 10),
+                                style: TextStyle(fontSize: 12),
                               ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors
                                     .white, // Set the background color to black
                                 foregroundColor:
                                     Colors.black, // Set the text color to white
-                                fixedSize: Size(87, 42),
+                                fixedSize: Size(95, 42),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   side: BorderSide(color: Colors.black),
@@ -339,15 +341,14 @@ class AddEmployee extends StatelessWidget {
                         ),
                         SizedBox(
                             height:
-                                16), // Add some spacing between the image and buttons
+                                20), // Add some spacing between the image and buttons
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             KaryawanDashboard()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AdminDashboard()));
                             },
                             child: Text('Tambahkan Data'),
                             style: ElevatedButton.styleFrom(
@@ -355,7 +356,7 @@ class AddEmployee extends StatelessWidget {
                                   .black, // Set the background color to black
                               foregroundColor:
                                   Colors.white, // Set the text color to white
-                              fixedSize: Size(184, 42),
+                              fixedSize: Size(190, 42),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 side: BorderSide(color: Colors.black),
