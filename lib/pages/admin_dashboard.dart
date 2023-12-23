@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
+import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 import 'package:pbo_ems/pages/tambah_karyawan.dart';
 import 'package:pbo_ems/pages/edit_data_karyawan.dart';
@@ -369,7 +370,16 @@ class YourWidget extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_outlined),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DaftarKaryawan()),
+                      );
+                    },
+                    child: Icon(Icons.arrow_forward_ios_outlined),
+                  ),
                 ),
               ),
             ),
