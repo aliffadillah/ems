@@ -4,7 +4,7 @@ import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 
-class TambahKaryawan extends StatelessWidget {
+class EditDataKaryawan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -83,13 +83,13 @@ class TambahKaryawan extends StatelessWidget {
             ),
           ],
         ),
-        body: MenambhakanKaryawan(),
+        body: PageEditKaryawan(),
       ),
     );
   }
 }
 
-class MenambhakanKaryawan extends StatelessWidget {
+class PageEditKaryawan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -102,7 +102,7 @@ class MenambhakanKaryawan extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
-                'Tambahkan Karyawan Baru',
+                'Edit Data Karyawan',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
@@ -131,7 +131,7 @@ class MenambhakanKaryawan extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 30.0, top: 30.0),
                           child: Text(
-                            'Menambahkan Karyawan Baru',
+                            'Masukan Nama Karyawan',
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Poppins',
@@ -147,37 +147,13 @@ class MenambhakanKaryawan extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: TextField(
                               decoration: InputDecoration(
-                                labelText: 'Masukkan Nama Karyawan',
+                                labelText: 'Edit Nama Karyawan',
                                 border: OutlineInputBorder(),
                               ),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: Text(
-                            'Total Jam Kerja',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 350,
-                          height: 70,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                labelText: 'Masukkan Jam Kerja',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ),
-                        ),
+
                         Padding(
                           padding: const EdgeInsets.only(left: 30.0, top: 2.5),
                           child: Text(
@@ -350,7 +326,7 @@ class MenambhakanKaryawan extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => AdminDashboard()));
                             },
-                            child: Text('Tambahkan Data'),
+                            child: Text('Edit Data Karyawan'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors
                                   .black, // Set the background color to black
