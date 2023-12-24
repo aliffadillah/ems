@@ -6,7 +6,6 @@ import 'package:pbo_ems/pages/login_page.dart';
 class AbsensiKaryawan extends StatelessWidget {
   const AbsensiKaryawan({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,13 +88,14 @@ class EmployeeList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Center(
+        Align(
+          alignment: AlignmentDirectional.topStart, // or Alignment.topLeft
           child: Container(
             margin: EdgeInsets.all(10.0),
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
-                'Daftar Kehadiran Karyawan Hotel',
+                'Daftar Kehadiran ',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -106,6 +106,146 @@ class EmployeeList extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: 328, // Adjust the width of the Container as needed
+                      height:
+                          113, // Adjust the height of the Container as needed
+                      decoration: ShapeDecoration(
+                        color: Color(0xf000000),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(padding: EdgeInsets.only(top: 20.0)),
+                          Container(
+                            width: 284,
+                            height: 30,
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Muhammad Alif Fadillah',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.26),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10.0),
+                          Container(
+                            width: 284,
+                            height: 30,
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '24-12-2023 11:12:50',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.26),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Container(
+                      width: 328, // Adjust the width of the Container as needed
+                      height:
+                          113, // Adjust the height of the Container as needed
+                      decoration: ShapeDecoration(
+                        color: Color(0xf000000),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(padding: EdgeInsets.only(top: 20.0)),
+                          Container(
+                            width: 284,
+                            height: 30,
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Fauzi Niko Allianzah',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.26),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10.0),
+                          Container(
+                            width: 284,
+                            height: 30,
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '24-12-2023 11:12:50',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.26),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         )
       ],
     );
