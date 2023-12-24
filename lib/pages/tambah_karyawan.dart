@@ -348,7 +348,7 @@ class AddEmployee extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AdminDashboard ()));
+                                      builder: (context) => AdminDashboard()));
                             },
                             child: Text('Tambahkan Data'),
                             style: ElevatedButton.styleFrom(
