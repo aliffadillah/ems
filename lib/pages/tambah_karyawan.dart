@@ -83,13 +83,13 @@ class TambahKaryawan extends StatelessWidget {
             ),
           ],
         ),
-        body: AddEmployee(),
+        body: MenambhakanKaryawan(),
       ),
     );
   }
 }
 
-class AddEmployee extends StatelessWidget {
+class MenambhakanKaryawan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

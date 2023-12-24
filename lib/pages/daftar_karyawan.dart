@@ -62,7 +62,9 @@ class DaftarKaryawan extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
+
                     MaterialPageRoute(builder: (context) => AdminDashboard()),
+
                   );
                 },
                 child: SvgPicture.asset('assets/icons/vector.svg'),

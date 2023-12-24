@@ -4,6 +4,7 @@ import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 import 'package:pbo_ems/pages/tambah_karyawan.dart';
+import 'package:pbo_ems/pages/edit_data_karyawan.dart';
 
 void main() {
   runApp(AdminDashboard());
@@ -19,6 +20,13 @@ class AdminDashboard extends StatelessWidget {
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
             backgroundColor: Colors.grey[400],
+            leading: Container(
+              margin: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(0.0),
+              width: 50.0,
+              height: 50.0,
+            ),
+
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -378,48 +386,6 @@ class YourWidget extends StatelessWidget {
             ),
             SizedBox(
               height: 16,
-            ),
-            Card(
-              child: Container(
-                width: 328, // Set the desired width for the ListTile container
-                height: 55, // Set the desired height for the ListTile container
-                child: ListTile(
-                  leading: Container(
-                    padding: EdgeInsets.all(10.0),
-                    width:
-                        55, // Set the desired width for the leading Container
-                    height:
-                        55, // Set the desired height for the leading Container
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                          8.0), // Set the desired border radius
-                    ),
-                    child: Container(
-                      width: 20,
-                      height: 30,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: SvgPicture.asset(
-                        'assets/icons/paper-upload.svg',
-                        width: 13, // Set the desired width for the Image
-                        height: 13, // Set the desired height for the Image
-                      ),
-                    ),
-                  ),
-                  title: Container(
-                      child: Text(
-                    'Update Karyawan',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w300,
-                    ),
-                  )),
-                  trailing: Icon(Icons.arrow_forward_ios_outlined),
-                ),
-              ),
             ),
           ],
         ),
