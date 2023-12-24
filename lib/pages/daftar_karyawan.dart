@@ -90,28 +90,139 @@ class DaftarKaryawan extends StatelessWidget {
 class EmployeeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          child: Container(
-            margin: EdgeInsets.all(10.0),
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                'Daftar Karyawan Hotel',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.84,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical, // Set the scroll direction to vertical
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Daftar Karyawan Hotel',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.84,
+                  ),
                 ),
               ),
             ),
           ),
-        )
-      ],
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    color: Colors.grey[200],
+                    child: SizedBox(
+                      width: 330,
+                      height: 230,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('Nama:'),
+                            Text('ID:'),
+                            Text('Jabatan:'),
+                            Text('Jenis Kelamin:'),
+                            Text('Jam Kerja:'),
+                            Text('Hari Kerja:'),
+                            Text('Total Gaji: '),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/icons/clipboard-fail.svg',
+                                          width: 24,
+                                          height: 24,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          'Hapus',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size.fromWidth(
+                                          200), // Adjust the width as needed
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    width: 5.0), // Add spacing between buttons
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/icons/edit.svg',
+                                          width: 24,
+                                          height: 24,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          'Edit',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                      fixedSize: Size.fromWidth(
+                                          200), // Adjust the width as needed
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              // Remove the separate Row for the button
+            ],
+          ),
+          // Add more widgets for your employee list here
+        ],
+      ),
     );
   }
 }
