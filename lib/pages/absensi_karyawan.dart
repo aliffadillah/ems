@@ -4,7 +4,6 @@ import 'package:pbo_ems/pages/admin_dashboard.dart';
 class AbsensiKaryawan extends StatelessWidget {
   const AbsensiKaryawan({Key? key}) : super(key: key);
 
-  static const String _title = 'Absensi Karyawan';
 
   @override
   Widget build(BuildContext context) {
