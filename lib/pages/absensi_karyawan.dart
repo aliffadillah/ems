@@ -4,6 +4,9 @@ import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 
 class AbsensiKaryawan extends StatelessWidget {
+  const AbsensiKaryawan({Key? key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -5,8 +5,6 @@ import 'package:pbo_ems/pages/karyawan_dashboard.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  static const String _title = 'Login Page';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

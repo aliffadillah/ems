@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
-import 'package:pbo_ems/pages/login_page.dart';
+import 'package:pbo_ems/pages/edit_data_karyawan.dart';
 
 class DaftarKaryawan extends StatelessWidget {
   @override
@@ -73,7 +73,6 @@ class DaftarKaryawan extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
-
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
@@ -82,19 +81,19 @@ class DaftarKaryawan extends StatelessWidget {
                 },
                 child: SvgPicture.asset('assets/icons/login.svg'),
               ),
-
               label: 'Logout',
             ),
           ],
         ),
-        body: EmployeeList(),
+        body: EmployeeList(context),
       ),
     );
   }
 }
 
 class EmployeeList extends StatelessWidget {
-
+  final BuildContext context;
+  EmployeeList(this.context);
   final TextStyle _employeeDetailStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontFamily: 'Poppins',
@@ -278,58 +277,66 @@ class EmployeeList extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/clipboard-fail.svg',
-                  width: 24,
-                  height: 24,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  'Hapus',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontFamily: 'Poppins',
-                    color: Colors.black,
+          child: Container(
+            width: 200, // Set the fixed width
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/clipboard-fail.svg',
+                    width: 24,
+                    height: 24,
                   ),
-                ),
-              ],
-            ),
-            style: ElevatedButton.styleFrom(
-              fixedSize: Size.fromWidth(200),
+                  SizedBox(width: 8),
+                  Text(
+                    'Hapus',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              style: ElevatedButton.styleFrom(),
             ),
           ),
         ),
         SizedBox(width: 5.0),
         Expanded(
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/edit.svg',
-                  width: 24,
-                  height: 24,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  'Edit',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
+          child: Container(
+            width: 200, // Set the fixed width
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditDataKaryawan()),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/edit.svg',
+                    width: 24,
+                    height: 24,
                   ),
-                ),
-              ],
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              fixedSize: Size.fromWidth(200),
+                  SizedBox(width: 8),
+                  Text(
+                    'Edit',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+              ),
             ),
           ),
         ),
