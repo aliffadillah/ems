@@ -143,13 +143,118 @@ class EmployeeList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Nama:', style: _employeeDetailStyle),
-                      Text('ID:', style: _employeeDetailStyle),
-                      Text('Jabatan:', style: _employeeDetailStyle),
-                      Text('Jenis Kelamin:', style: _employeeDetailStyle),
-                      Text('Jam Kerja:', style: _employeeDetailStyle),
-                      Text('Hari Kerja:', style: _employeeDetailStyle),
-                      Text('Total Kerja:', style: _employeeDetailStyle),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Nama',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Muhammad Alif',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'ID',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 065122109',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jabatan',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Yang Mulia',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jenis Kelamin',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Laki-Laki',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jam Kerja',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 1 Jam',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Hari Kerja',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 1 Hari',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Total Gaji',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Rp. 999.999.999.999',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 10),
                       buildElevatedButtons(),
                     ],
