@@ -17,7 +17,7 @@ class AdminDashboard extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(65.0),
+          preferredSize: Size.fromHeight(50.0),
           child: AppBar(
             backgroundColor: Colors.grey[400],
             leading: Container(
@@ -26,6 +26,7 @@ class AdminDashboard extends StatelessWidget {
               width: 50.0,
               height: 50.0,
             ),
+
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -356,8 +357,8 @@ class YourWidget extends StatelessWidget {
                     ),
                     child: SvgPicture.asset(
                       'assets/icons/drawer-add.svg',
-                      width: 13, // Set the desired width for the Image
-                      height: 13, // Set the desired height for the Image
+                      width: 1.0, // Set the desired width for the Image
+                      height: 1.0, // Set the desired height for the Image
                     ),
                   ),
                   title: Container(
@@ -365,7 +366,7 @@ class YourWidget extends StatelessWidget {
                     'Tampilkan Data Karyawan',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12.5,
+                      fontSize: 12,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w300,
                     ),

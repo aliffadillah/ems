@@ -62,7 +62,9 @@ class DaftarKaryawan extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => DaftarKaryawan()),
+
+                    MaterialPageRoute(builder: (context) => AdminDashboard()),
+
                   );
                 },
                 child: SvgPicture.asset('assets/icons/vector.svg'),
@@ -71,13 +73,16 @@ class DaftarKaryawan extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: SvgPicture.asset('assets/icons/login.svg')),
+
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => AdminDashboard()),
+                  );
+                },
+                child: SvgPicture.asset('assets/icons/login.svg'),
+              ),
+
               label: 'Logout',
             ),
           ],
@@ -89,29 +94,245 @@ class DaftarKaryawan extends StatelessWidget {
 }
 
 class EmployeeList extends StatelessWidget {
+
+  final TextStyle _employeeDetailStyle = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Poppins',
+  );
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          child: Container(
-            margin: EdgeInsets.all(10.0),
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                'Daftar Karyawan Hotel',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.84,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Daftar Karyawan Hotel',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.84,
+                  ),
                 ),
               ),
             ),
           ),
-        )
+          buildEmployeeCard(),
+          SizedBox(height: 16),
+          // Add more widgets for your employee list here
+        ],
+      ),
+    );
+  }
+
+  Widget buildEmployeeCard() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Card(
+              color: Colors.grey[200],
+              child: SizedBox(
+                width: 330,
+                height: 230,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Nama',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Muhammad Alif',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'ID',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 065122109',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jabatan',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Yang Mulia',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jenis Kelamin',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Laki-Laki',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Jam Kerja',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 1 Jam',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Hari Kerja',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': 1 Hari',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Total Gaji',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              ': Rp. 999.999.999.999',
+                              style: _employeeDetailStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      buildElevatedButtons(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget buildElevatedButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/clipboard-fail.svg',
+                  width: 24,
+                  height: 24,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Hapus',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'Poppins',
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size.fromWidth(200),
+            ),
+          ),
+        ),
+        SizedBox(width: 5.0),
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/edit.svg',
+                  width: 24,
+                  height: 24,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Edit',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              fixedSize: Size.fromWidth(200),
+            ),
+          ),
+        ),
       ],
     );
   }
