@@ -109,7 +109,7 @@ class MenambhakanKaryawan extends StatelessWidget {
                   fontSize: 16,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 1.84,
+                  letterSpacing: 1,
                 ),
               ),
             ),
