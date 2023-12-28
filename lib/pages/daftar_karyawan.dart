@@ -62,9 +62,7 @@ class DaftarKaryawan extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-
                     MaterialPageRoute(builder: (context) => AdminDashboard()),
-
                   );
                 },
                 child: SvgPicture.asset('assets/icons/vector.svg'),
@@ -158,7 +156,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Muhammad Alif',
+                              ': John Doe',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -174,7 +172,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': 065122109',
+                              ': 123456',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -190,7 +188,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Yang Mulia',
+                              ': Tetap',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -222,7 +220,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': 1 Jam',
+                              ': 40 Jam',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -238,7 +236,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': 1 Hari',
+                              ': 3 Hari',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -254,7 +252,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Rp. 999.999.999.999',
+                              ': Rp. 12.000.000',
                               style: _employeeDetailStyle,
                             ),
                           ),
