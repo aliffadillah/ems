@@ -89,7 +89,17 @@ class EditDataKaryawan extends StatelessWidget {
   }
 }
 
-class PageEditKaryawan extends StatelessWidget {
+class PageEditKaryawan extends StatefulWidget {
+  const PageEditKaryawan({super.key});
+
+  @override
+  State<PageEditKaryawan> createState() => _PageEditKaryawanState();
+}
+
+class _PageEditKaryawanState extends State<PageEditKaryawan> {
+  String? jenisKelaminUpdate;
+  String? jabatanUpdate;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -97,7 +107,6 @@ class PageEditKaryawan extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            // Wrap the Container with Center
             child: Container(
               margin: EdgeInsets.all(10.0),
               child: Padding(
@@ -155,7 +164,6 @@ class PageEditKaryawan extends StatelessWidget {
                               ),
                             ),
                           ),
-
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 30.0, top: 2.5),
@@ -169,61 +177,59 @@ class PageEditKaryawan extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             AdminDashboard()));
+                                  setState(() {
+                                    jenisKelaminUpdate = 'Laki-laki';
+                                  });
                                 },
                                 child: Text('Laki-laki'),
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.black,
+                                    backgroundColor:
+                                        jenisKelaminUpdate == 'Laki-laki'
+                                            ? Colors.black
+                                            : Colors.white,
+                                    foregroundColor:
+                                        jenisKelaminUpdate == 'Laki-laki'
+                                            ? Colors.white
+                                            : Colors.black,
                                     fixedSize: Size(125, 42),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       side: BorderSide(color: Colors.black),
-                                    ) // Set the border radius here
-                                    ),
+                                    )),
                               ),
-
-                              SizedBox(
-                                  height: 16), // Add spacing between buttons
+                              SizedBox(height: 16),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             KaryawanDashboard()));
+                                  setState(() {
+                                    jenisKelaminUpdate = 'Perempuan';
+                                  });
                                 },
                                 child: Text('Perempuan'),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors
-                                      .black, // Set the background color to black
-                                  foregroundColor: Colors
-                                      .white, // Set the text color to white
+                                  backgroundColor:
+                                      jenisKelaminUpdate == 'Perempuan'
+                                          ? Colors.black
+                                          : Colors.white,
+                                  foregroundColor:
+                                      jenisKelaminUpdate == 'Perempuan'
+                                          ? Colors.white
+                                          : Colors.black,
                                   fixedSize: Size(125, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(color: Colors.black),
-                                  ), // Set the size here
-                                  // Set the border color and width
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 30.0, top: 2.5),
@@ -237,92 +243,86 @@ class PageEditKaryawan extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             AdminDashboard()));
+                                  setState(() {
+                                    jabatanUpdate = 'Tetap';
+                                  });
                                 },
                                 child: Text(
                                   'Tetap',
                                   style: TextStyle(fontSize: 14),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.black,
+                                    backgroundColor: jabatanUpdate == 'Tetap'
+                                        ? Colors.black
+                                        : Colors.white,
+                                    foregroundColor: jabatanUpdate == 'Tetap'
+                                        ? Colors.white
+                                        : Colors.black,
                                     fixedSize: Size(95, 42),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       side: BorderSide(
                                           color: Colors.black, width: 1.0),
-                                    ) // Set the border radius here
-                                    ),
+                                    )),
                               ),
-                              // Add spacing between buttons
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             KaryawanDashboard()));
+                                  setState(() {
+                                    jabatanUpdate = 'Kontrak';
+                                  });
                                 },
                                 child: Text(
                                   'Kontrak',
                                   style: TextStyle(fontSize: 13),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors
-                                      .white, // Set the background color to black
-                                  foregroundColor: Colors
-                                      .black, // Set the text color to white
+                                  backgroundColor: jabatanUpdate == 'Kontrak'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanUpdate == 'Kontrak'
+                                      ? Colors.white
+                                      : Colors.black,
                                   fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(
                                         color: Colors.black, width: 1.0),
-                                  ), // Set the size here
-                                  // Set the border color and width
+                                  ),
                                 ),
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             KaryawanDashboard()));
+                                  setState(() {
+                                    jabatanUpdate = 'Magang';
+                                  });
                                 },
                                 child: Text(
                                   'Magang',
                                   style: TextStyle(fontSize: 12),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors
-                                      .white, // Set the background color to black
-                                  foregroundColor: Colors
-                                      .black, // Set the text color to white
+                                  backgroundColor: jabatanUpdate == 'Magang'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanUpdate == 'Magang'
+                                      ? Colors.white
+                                      : Colors.black,
                                   fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(color: Colors.black),
-                                  ), // Set the size here
-                                  // Set the border color and width
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                              height:
-                                  20), // Add some spacing between the image and buttons
+                          SizedBox(height: 20),
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
@@ -334,20 +334,16 @@ class PageEditKaryawan extends StatelessWidget {
                               },
                               child: Text('Edit Data Karyawan'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors
-                                    .black, // Set the background color to black
-                                foregroundColor:
-                                    Colors.white, // Set the text color to white
+                                backgroundColor: Colors.black,
+                                foregroundColor: Colors.white,
                                 fixedSize: Size(190, 42),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   side: BorderSide(color: Colors.black),
-                                ), // Set the size here
-                                // Set the border color and width
+                                ),
                               ),
                             ),
                           ),
-                          // Add more TextFields or other widgets as needed
                         ],
                       ),
                     ),

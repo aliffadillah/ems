@@ -90,23 +90,23 @@ class TambahKaryawan extends StatelessWidget {
 }
 
 class MenambahkanKaryawan extends StatefulWidget {
+  const MenambahkanKaryawan({super.key});
+
   @override
-  _MenambahkanKaryawanState createState() => _MenambahkanKaryawanState();
+  State<MenambahkanKaryawan> createState() => _MenambahkanKaryawanState();
 }
 
 class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
-  String selectedJenisKelamin = '';
-  String selectedJabatan = '';
+  String? jenisKelaminValue;
+  String? jabatanValue;
 
   @override
   Widget build(BuildContext context) {
-    //singlechildscrollview
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            // Wrap the Container with Center
             child: Container(
               margin: EdgeInsets.all(10.0),
               child: Padding(
@@ -202,34 +202,60 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              DropdownButton<String>(
-                                value: selectedJenisKelamin,
-                                onChanged: (value) {
+                              ElevatedButton(
+                                onPressed: () {
                                   setState(() {
-                                    selectedJenisKelamin = value!;
+                                    jenisKelaminValue = 'Laki-laki';
                                   });
                                 },
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text('Laki-laki'),
-                                    value: 'Laki-laki',
+                                child: const Text('Laki-laki'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      jenisKelaminValue == 'Laki-laki'
+                                          ? Colors.black
+                                          : Colors.white,
+                                  foregroundColor:
+                                      jenisKelaminValue == 'Laki-laki'
+                                          ? Colors.white
+                                          : Colors.black,
+                                  fixedSize: Size(125, 42),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide(color: Colors.black),
                                   ),
-                                  DropdownMenuItem(
-                                      child: Text('Perempuan'),
-                                      value: 'Perempuan'),
-                                ],
-                              )
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jenisKelaminValue = 'Perempuan';
+                                  });
+                                },
+                                child: const Text('Perempuan'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      jenisKelaminValue == 'Perempuan'
+                                          ? Colors.black
+                                          : Colors.white,
+                                  foregroundColor:
+                                      jenisKelaminValue == 'Perempuan'
+                                          ? Colors.white
+                                          : Colors.black,
+                                  fixedSize: Size(125, 42),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide(color: Colors.black),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 30.0, top: 2.5),
@@ -243,92 +269,86 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                              height:
-                                  16), // Add some spacing between the image and buttons
+                          SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             AdminDashboard()));
+                                  setState(() {
+                                    jabatanValue = 'Tetap';
+                                  });
                                 },
                                 child: Text(
                                   'Tetap',
                                   style: TextStyle(fontSize: 14),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.black,
+                                    backgroundColor: jabatanValue == 'Tetap'
+                                        ? Colors.black
+                                        : Colors.white,
+                                    foregroundColor: jabatanValue == 'Tetap'
+                                        ? Colors.white
+                                        : Colors.black,
                                     fixedSize: Size(95, 42),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       side: BorderSide(
                                           color: Colors.black, width: 1.0),
-                                    ) // Set the border radius here
-                                    ),
+                                    )),
                               ),
-                              // Add spacing between buttons
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             KaryawanDashboard()));
+                                  setState(() {
+                                    jabatanValue = 'Kontrak';
+                                  });
                                 },
                                 child: Text(
                                   'Kontrak',
                                   style: TextStyle(fontSize: 13),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors
-                                      .white, // Set the background color to black
-                                  foregroundColor: Colors
-                                      .black, // Set the text color to white
+                                  backgroundColor: jabatanValue == 'Kontrak'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanValue == 'Kontrak'
+                                      ? Colors.white
+                                      : Colors.black,
                                   fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(
                                         color: Colors.black, width: 1.0),
-                                  ), // Set the size here
-                                  // Set the border color and width
+                                  ),
                                 ),
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             KaryawanDashboard()));
+                                  setState(() {
+                                    jabatanValue = 'Magang';
+                                  });
                                 },
                                 child: Text(
                                   'Magang',
                                   style: TextStyle(fontSize: 12),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors
-                                      .white, // Set the background color to black
-                                  foregroundColor: Colors
-                                      .black, // Set the text color to white
+                                  backgroundColor: jabatanValue == 'Magang'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanValue == 'Magang'
+                                      ? Colors.white
+                                      : Colors.black,
                                   fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(color: Colors.black),
-                                  ), // Set the size here
-                                  // Set the border color and width
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                              height:
-                                  20), // Add some spacing between the image and buttons
+                          SizedBox(height: 20),
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
@@ -340,20 +360,16 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                               },
                               child: Text('Tambahkan Data'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors
-                                    .black, // Set the background color to black
-                                foregroundColor:
-                                    Colors.white, // Set the text color to white
+                                backgroundColor: Colors.black,
+                                foregroundColor: Colors.white,
                                 fixedSize: Size(190, 42),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   side: BorderSide(color: Colors.black),
-                                ), // Set the size here
-                                // Set the border color and width
+                                ),
                               ),
                             ),
                           ),
-                          // Add more TextFields or other widgets as needed
                         ],
                       ),
                     ),

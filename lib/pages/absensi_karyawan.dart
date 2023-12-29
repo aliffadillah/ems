@@ -89,7 +89,7 @@ class EmployeeList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Align(
-          alignment: AlignmentDirectional.topStart, // or Alignment.topLeft
+          alignment: AlignmentDirectional.topStart,
           child: Container(
             margin: EdgeInsets.all(10.0),
             child: Padding(
@@ -115,9 +115,8 @@ class EmployeeList extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      width: 328, // Adjust the width of the Container as needed
-                      height:
-                          113, // Adjust the height of the Container as needed
+                      width: 328,
+                      height: 113,
                       decoration: ShapeDecoration(
                         color: Color(0xf000000),
                         shape: RoundedRectangleBorder(
@@ -179,9 +178,8 @@ class EmployeeList extends StatelessWidget {
                     ),
                     SizedBox(height: 20.0),
                     Container(
-                      width: 328, // Adjust the width of the Container as needed
-                      height:
-                          113, // Adjust the height of the Container as needed
+                      width: 328,
+                      height: 113,
                       decoration: ShapeDecoration(
                         color: Color(0xf000000),
                         shape: RoundedRectangleBorder(

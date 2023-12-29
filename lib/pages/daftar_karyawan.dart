@@ -124,7 +124,6 @@ class EmployeeList extends StatelessWidget {
           ),
           buildEmployeeCard(),
           SizedBox(height: 16),
-          // Add more widgets for your employee list here
         ],
       ),
     );
@@ -305,7 +304,7 @@ class EmployeeList extends StatelessWidget {
         SizedBox(width: 5.0),
         Expanded(
           child: Container(
-            width: 200, // Set the fixed width
+            width: 200,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
