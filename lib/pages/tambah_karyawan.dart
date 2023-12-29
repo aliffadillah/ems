@@ -83,298 +83,303 @@ class TambahKaryawan extends StatelessWidget {
             ),
           ],
         ),
-        body: MenambhakanKaryawan(),
+        body: MenambahkanKaryawan(),
       ),
     );
   }
 }
 
-class MenambhakanKaryawan extends StatelessWidget {
+class MenambahkanKaryawan extends StatefulWidget {
+  const MenambahkanKaryawan({super.key});
+
+  @override
+  State<MenambahkanKaryawan> createState() => _MenambahkanKaryawanState();
+}
+
+class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
+  String? jenisKelaminValue;
+  String? jabatanValue;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          // Wrap the Container with Center
-          child: Container(
-            margin: EdgeInsets.all(10.0),
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                'Tambahkan Karyawan Baru',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Tambahkan Karyawan Baru',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Card(
-                  color: Colors.grey[200],
-                  child: SizedBox(
-                    width: 360,
-                    height: 500,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0, top: 30.0),
-                          child: Text(
-                            'Menambahkan Karyawan Baru',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 350,
-                          height: 70,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                labelText: 'Masukkan Nama Karyawan',
-                                border: OutlineInputBorder(),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    color: Colors.grey[200],
+                    child: SizedBox(
+                      width: 360,
+                      height: 500,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 30.0, top: 30.0),
+                            child: Text(
+                              'Menambahkan Karyawan Baru',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: Text(
-                            'Total Jam Kerja',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 350,
-                          height: 70,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                labelText: 'Masukkan Jam Kerja',
-                                border: OutlineInputBorder(),
+                          Container(
+                            width: 350,
+                            height: 70,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: 'Masukkan Nama Karyawan',
+                                  border: OutlineInputBorder(),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0, top: 2.5),
-                          child: Text(
-                            'Jenis Kelamin',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30.0),
+                            child: Text(
+                              'Total Jam Kerja',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                            height:
-                                16), // Add some spacing between the image and buttons
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             AdminDashboard()));
-                              },
-                              child: Text('Laki-laki'),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  foregroundColor: Colors.black,
+                          Container(
+                            width: 350,
+                            height: 70,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: 'Masukkan Jam Kerja',
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 30.0, top: 2.5),
+                            child: Text(
+                              'Jenis Kelamin',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jenisKelaminValue = 'Laki-laki';
+                                  });
+                                },
+                                child: const Text('Laki-laki'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      jenisKelaminValue == 'Laki-laki'
+                                          ? Colors.black
+                                          : Colors.white,
+                                  foregroundColor:
+                                      jenisKelaminValue == 'Laki-laki'
+                                          ? Colors.white
+                                          : Colors.black,
                                   fixedSize: Size(125, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(color: Colors.black),
-                                  ) // Set the border radius here
                                   ),
-                            ),
-
-                            SizedBox(height: 16), // Add spacing between buttons
-                            ElevatedButton(
-                              onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             KaryawanDashboard()));
-                              },
-                              child: Text('Perempuan'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors
-                                    .black, // Set the background color to black
-                                foregroundColor:
-                                    Colors.white, // Set the text color to white
-                                fixedSize: Size(125, 42),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide(color: Colors.black),
-                                ), // Set the size here
-                                // Set the border color and width
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                            height:
-                                16), // Add some spacing between the image and buttons
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0, top: 2.5),
-                          child: Text(
-                            'Jabatan',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jenisKelaminValue = 'Perempuan';
+                                  });
+                                },
+                                child: const Text('Perempuan'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      jenisKelaminValue == 'Perempuan'
+                                          ? Colors.black
+                                          : Colors.white,
+                                  foregroundColor:
+                                      jenisKelaminValue == 'Perempuan'
+                                          ? Colors.white
+                                          : Colors.black,
+                                  fixedSize: Size(125, 42),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide(color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 16),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 30.0, top: 2.5),
+                            child: Text(
+                              'Jabatan',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                            height:
-                                16), // Add some spacing between the image and buttons
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             AdminDashboard()));
-                              },
-                              child: Text(
-                                'Tetap',
-                                style: TextStyle(fontSize: 14),
+                          SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jabatanValue = 'Tetap';
+                                  });
+                                },
+                                child: Text(
+                                  'Tetap',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: jabatanValue == 'Tetap'
+                                        ? Colors.black
+                                        : Colors.white,
+                                    foregroundColor: jabatanValue == 'Tetap'
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fixedSize: Size(95, 42),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      side: BorderSide(
+                                          color: Colors.black, width: 1.0),
+                                    )),
                               ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  foregroundColor: Colors.black,
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jabatanValue = 'Kontrak';
+                                  });
+                                },
+                                child: Text(
+                                  'Kontrak',
+                                  style: TextStyle(fontSize: 13),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: jabatanValue == 'Kontrak'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanValue == 'Kontrak'
+                                      ? Colors.white
+                                      : Colors.black,
                                   fixedSize: Size(95, 42),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(
                                         color: Colors.black, width: 1.0),
-                                  ) // Set the border radius here
                                   ),
-                            ),
-                            // Add spacing between buttons
-                            ElevatedButton(
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jabatanValue = 'Magang';
+                                  });
+                                },
+                                child: Text(
+                                  'Magang',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: jabatanValue == 'Magang'
+                                      ? Colors.black
+                                      : Colors.white,
+                                  foregroundColor: jabatanValue == 'Magang'
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fixedSize: Size(95, 42),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide(color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Center(
+                            child: ElevatedButton(
                               onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             KaryawanDashboard()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AdminDashboard()));
                               },
-                              child: Text(
-                                'Kontrak',
-                                style: TextStyle(fontSize: 13),
-                              ),
+                              child: Text('Tambahkan Data'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors
-                                    .white, // Set the background color to black
-                                foregroundColor:
-                                    Colors.black, // Set the text color to white
-                                fixedSize: Size(95, 42),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide(
-                                      color: Colors.black, width: 1.0),
-                                ), // Set the size here
-                                // Set the border color and width
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             KaryawanDashboard()));
-                              },
-                              child: Text(
-                                'Magang',
-                                style: TextStyle(fontSize: 12),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors
-                                    .white, // Set the background color to black
-                                foregroundColor:
-                                    Colors.black, // Set the text color to white
-                                fixedSize: Size(95, 42),
+                                backgroundColor: Colors.black,
+                                foregroundColor: Colors.white,
+                                fixedSize: Size(190, 42),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   side: BorderSide(color: Colors.black),
-                                ), // Set the size here
-                                // Set the border color and width
+                                ),
                               ),
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                            height:
-                                20), // Add some spacing between the image and buttons
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminDashboard()));
-                            },
-                            child: Text('Tambahkan Data'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors
-                                  .black, // Set the background color to black
-                              foregroundColor:
-                                  Colors.white, // Set the text color to white
-                              fixedSize: Size(190, 42),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                side: BorderSide(color: Colors.black),
-                              ), // Set the size here
-                              // Set the border color and width
-                            ),
                           ),
-                        ),
-                        // Add more TextFields or other widgets as needed
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

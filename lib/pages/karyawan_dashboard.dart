@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
-import 'package:pbo_ems/pages/login_page.dart';
 
 class KaryawanDashboard extends StatelessWidget {
   @override
@@ -112,10 +109,7 @@ class AddEmployee extends StatelessWidget {
                             ),
                           ),
                         ),
-
-                        SizedBox(
-                            height:
-                                20), // Add some spacing between the image and buttons
+                        SizedBox(height: 20),
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
@@ -126,20 +120,16 @@ class AddEmployee extends StatelessWidget {
                             },
                             child: Text('Tambahkan Kehadiran'),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors
-                                  .black, // Set the background color to black
-                              foregroundColor:
-                                  Colors.white, // Set the text color to white
+                              backgroundColor: Colors.black,
+                              foregroundColor: Colors.white,
                               fixedSize: Size(190, 42),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 side: BorderSide(color: Colors.black),
-                              ), // Set the size here
-                              // Set the border color and width
+                              ),
                             ),
                           ),
                         ),
-                        // Add more TextFields or other widgets as needed
                       ],
                     ),
                   ),

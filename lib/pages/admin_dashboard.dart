@@ -4,7 +4,6 @@ import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 import 'package:pbo_ems/pages/tambah_karyawan.dart';
-import 'package:pbo_ems/pages/edit_data_karyawan.dart';
 
 void main() {
   runApp(AdminDashboard());
@@ -26,7 +25,6 @@ class AdminDashboard extends StatelessWidget {
               width: 50.0,
               height: 50.0,
             ),
-
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -293,24 +291,27 @@ class YourWidget extends StatelessWidget {
           children: [
             Card(
               child: Container(
-                width: 328, // Set the desired width for the ListTile container
-                height: 55, // Set the desired height for the ListTile container
+                width: 328,
+                height: 55,
                 child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TambahKaryawan()),
+                    );
+                  },
                   leading: Container(
                     padding: EdgeInsets.all(10.0),
-                    width:
-                        55, // Set the desired width for the leading Container
-                    height:
-                        55, // Set the desired height for the leading Container
+                    width: 55,
+                    height: 55,
                     decoration: BoxDecoration(
                       color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                          8.0), // Set the desired border radius
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: SvgPicture.asset(
                       'assets/icons/paper-add.svg',
-                      width: 1.0, // Set the desired width for the Image
-                      height: 1.0, // Set the desired height for the Image
+                      width: 1.0,
+                      height: 1.0,
                     ),
                   ),
                   title: Container(
@@ -323,16 +324,7 @@ class YourWidget extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   )),
-                  trailing: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TambahKaryawan()),
-                      );
-                    },
-                    child: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
+                  trailing: Icon(Icons.arrow_forward_ios_outlined),
                 ),
               ),
             ),
@@ -341,37 +333,9 @@ class YourWidget extends StatelessWidget {
             ),
             Card(
               child: Container(
-                width: 328, // Set the desired width for the ListTile container
-                height: 55, // Set the desired height for the ListTile container
+                width: 328,
+                height: 55,
                 child: ListTile(
-                  leading: Container(
-                    padding: EdgeInsets.all(10.0),
-                    width:
-                        55, // Set the desired width for the leading Container
-                    height:
-                        55, // Set the desired height for the leading Container
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                          8.0), // Set the desired border radius
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/drawer-add.svg',
-                      width: 1.0, // Set the desired width for the Image
-                      height: 1.0, // Set the desired height for the Image
-                    ),
-                  ),
-                  title: Container(
-                      child: Text(
-                    'Tampilkan Data Karyawan',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w300,
-                    ),
-                  )),
-                  trailing: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -379,9 +343,31 @@ class YourWidget extends StatelessWidget {
                             builder: (context) => DaftarKaryawan()),
                       );
                     },
-                    child: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
-                ),
+                    leading: Container(
+                      padding: EdgeInsets.all(10.0),
+                      width: 55,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/icons/drawer-add.svg',
+                        width: 1.0,
+                        height: 1.0,
+                      ),
+                    ),
+                    title: Container(
+                        child: Text(
+                      'Tampilkan Data Karyawan',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    )),
+                    trailing: Icon(Icons.arrow_forward_ios_outlined)),
               ),
             ),
             SizedBox(
