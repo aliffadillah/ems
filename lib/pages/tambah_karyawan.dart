@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pbo_ems/models/karyawan.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
+import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 
 class TambahKaryawan extends StatelessWidget {
@@ -137,7 +138,7 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                     color: Colors.grey[200],
                     child: SizedBox(
                       width: 360,
-                      height: 500,
+                      height: 430,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -163,32 +164,6 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                                 controller: namaController,
                                 decoration: InputDecoration(
                                   labelText: 'Masukkan Nama Karyawan',
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30.0),
-                            child: Text(
-                              'Total Jam Kerja',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 350,
-                            height: 70,
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: TextField(
-                                controller: jamController,
-                                decoration: InputDecoration(
-                                  labelText: 'Masukkan Jam Kerja',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
@@ -357,38 +332,50 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
-                                late Karyawan karyawan;
-                                switch (jabatanValue) {
-                                  case 'Tetap':
-                                    karyawan = KaryawanTetap(
-                                      Karyawan.id,
-                                      namaController.text,
-                                      jenisKelaminValue!,
-                                    );
-                                    break;
-                                  case 'Kontrak':
-                                    karyawan = KaryawanKontrak(
-                                      Karyawan.id,
-                                      namaController.text,
-                                      jenisKelaminValue!,
-                                    );
-                                    break;
-                                  case 'Magang':
-                                    karyawan = KaryawanMagang(
-                                      Karyawan.id,
-                                      namaController.text,
-                                      jenisKelaminValue!,
-                                    );
-                                    break;
-                                  default:
-                                }
-                                Karyawan.daftarKaryawan.add(karyawan);
-                                Karyawan.id++;
-                                Navigator.push(
+                                if (namaController.text.isEmpty ||
+                                    jenisKelaminValue == null ||
+                                    jabatanValue == null) {
+                                  // Show a snackbar or any other feedback to inform the user to fill in all data
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Silahkan isi data'),
+                                    ),
+                                  );
+                                } else {
+                                  // Data is filled, proceed with adding the employee
+                                  late Karyawan karyawan;
+                                  switch (jabatanValue) {
+                                    case 'Tetap':
+                                      karyawan = KaryawanTetap(
+                                        Karyawan.id,
+                                        namaController.text,
+                                        jenisKelaminValue!,
+                                      );
+                                      break;
+                                    case 'Kontrak':
+                                      karyawan = KaryawanKontrak(
+                                        Karyawan.id,
+                                        namaController.text,
+                                        jenisKelaminValue!,
+                                      );
+                                      break;
+                                    case 'Magang':
+                                      karyawan = KaryawanMagang(
+                                        Karyawan.id,
+                                        namaController.text,
+                                        jenisKelaminValue!,
+                                      );
+                                      break;
+                                    default:
+                                  }
+                                  Karyawan.daftarKaryawan.add(karyawan);
+                                  Karyawan.id++;
+                                  Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            AdminDashboard()));
+                                        builder: (context) => DaftarKaryawan()),
+                                  );
+                                }
                               },
                               child: Text('Tambahkan Data'),
                               style: ElevatedButton.styleFrom(

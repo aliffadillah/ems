@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/models/karyawan.dart';
 import 'package:collection/collection.dart';
+import 'package:pbo_ems/pages/login_page.dart';
 
 class KaryawanDashboard extends StatelessWidget {
   @override
@@ -113,7 +113,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                             child: TextField(
                               controller: idController,
                               decoration: InputDecoration(
-                                labelText: 'Enter Id Karyawan',
+                                labelText: 'Enter ID Karyawan',
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -137,8 +137,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            AdminDashboard()));
+                                        builder: (context) => LoginPage()));
                               }
                             },
                             child: Text('Tambahkan Kehadiran'),

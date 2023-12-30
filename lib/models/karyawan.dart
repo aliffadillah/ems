@@ -1,5 +1,3 @@
-import 'dart:io';
-
 abstract class Karyawan {
   final int _id;
   String nama;
@@ -21,7 +19,6 @@ abstract class Karyawan {
 
   static List<Karyawan> daftarKaryawan = [];
   static int id = 1;
-
 }
 
 class KaryawanTetap extends Karyawan {

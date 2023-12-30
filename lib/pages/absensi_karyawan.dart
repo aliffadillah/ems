@@ -21,25 +21,6 @@ class AbsensiKaryawan extends StatelessWidget {
               padding: EdgeInsets.all(0.0),
               width: 50.0,
               height: 50.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios_outlined),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
             ),
           ),
         ),

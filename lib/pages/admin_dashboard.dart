@@ -5,7 +5,6 @@ import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 import 'package:pbo_ems/pages/tambah_karyawan.dart';
 import 'package:pbo_ems/models/karyawan.dart';
-import 'package:collection/collection.dart';
 
 void main() {
   runApp(AdminDashboard());

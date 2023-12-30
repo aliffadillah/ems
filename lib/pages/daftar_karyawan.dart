@@ -212,7 +212,7 @@ class _EmployeeListState extends State<EmployeeList> {
                           ),
                           Expanded(
                             child: Text(
-                              ': Laki-Laki',
+                              ': ${karyawan.jenisKelamin}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -244,7 +244,7 @@ class _EmployeeListState extends State<EmployeeList> {
                           ),
                           Expanded(
                             child: Text(
-                              ': ${karyawan.gajiPerjam}',
+                              ': Rp. ${karyawan.gajiPerjam * karyawan.jamKerja}',
                               style: _employeeDetailStyle,
                             ),
                           ),
