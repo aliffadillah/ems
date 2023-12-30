@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
+import 'package:pbo_ems/models/karyawan.dart';
+import 'package:collection/collection.dart';
 
 class KaryawanDashboard extends StatelessWidget {
   @override
@@ -44,7 +46,14 @@ class KaryawanDashboard extends StatelessWidget {
   }
 }
 
-class AddEmployee extends StatelessWidget {
+class AddEmployee extends StatefulWidget {
+  @override
+  State<AddEmployee> createState() => _AddEmployeeState();
+}
+
+class _AddEmployeeState extends State<AddEmployee> {
+  TextEditingController idController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -87,7 +96,7 @@ class AddEmployee extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 30.0, top: 30.0),
                           child: Text(
-                            'Masukan Id Karyawan',
+                            'Masukan ID Karyawan',
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Poppins',
@@ -102,6 +111,7 @@ class AddEmployee extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: TextField(
+                              controller: idController,
                               decoration: InputDecoration(
                                 labelText: 'Enter Id Karyawan',
                                 border: OutlineInputBorder(),
@@ -113,10 +123,23 @@ class AddEmployee extends StatelessWidget {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminDashboard()));
+                              Karyawan? absenKaryawan = Karyawan.daftarKaryawan
+                                  .firstWhereOrNull((karyawan) =>
+                                      karyawan.getId.toString() ==
+                                      idController.text);
+                              if (absenKaryawan != null) {
+                                final now = DateTime.now();
+
+                                final formattedDate =
+                                    '${now.day}-${now.month}-${now.year} ${now.hour}:${now.minute}:${now.second}';
+
+                                absenKaryawan.absensi.add(formattedDate);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AdminDashboard()));
+                              }
                             },
                             child: Text('Tambahkan Kehadiran'),
                             style: ElevatedButton.styleFrom(

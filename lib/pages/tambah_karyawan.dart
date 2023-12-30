@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pbo_ems/models/karyawan.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/login_page.dart';
@@ -97,6 +98,8 @@ class MenambahkanKaryawan extends StatefulWidget {
 }
 
 class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
+  TextEditingController namaController = TextEditingController();
+  TextEditingController jamController = TextEditingController();
   String? jenisKelaminValue;
   String? jabatanValue;
 
@@ -157,6 +160,7 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: TextField(
+                                controller: namaController,
                                 decoration: InputDecoration(
                                   labelText: 'Masukkan Nama Karyawan',
                                   border: OutlineInputBorder(),
@@ -182,6 +186,7 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: TextField(
+                                controller: jamController,
                                 decoration: InputDecoration(
                                   labelText: 'Masukkan Jam Kerja',
                                   border: OutlineInputBorder(),
@@ -352,6 +357,33 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
+                                late Karyawan karyawan;
+                                switch (jabatanValue) {
+                                  case 'Tetap':
+                                    karyawan = KaryawanTetap(
+                                      Karyawan.id,
+                                      namaController.text,
+                                      jenisKelaminValue!,
+                                    );
+                                    break;
+                                  case 'Kontrak':
+                                    karyawan = KaryawanKontrak(
+                                      Karyawan.id,
+                                      namaController.text,
+                                      jenisKelaminValue!,
+                                    );
+                                    break;
+                                  case 'Magang':
+                                    karyawan = KaryawanMagang(
+                                      Karyawan.id,
+                                      namaController.text,
+                                      jenisKelaminValue!,
+                                    );
+                                    break;
+                                  default:
+                                }
+                                Karyawan.daftarKaryawan.add(karyawan);
+                                Karyawan.id++;
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

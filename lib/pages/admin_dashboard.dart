@@ -4,6 +4,8 @@ import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 import 'package:pbo_ems/pages/tambah_karyawan.dart';
+import 'package:pbo_ems/models/karyawan.dart';
+import 'package:collection/collection.dart';
 
 void main() {
   runApp(AdminDashboard());
@@ -68,6 +70,14 @@ class AdminDashboard extends StatelessWidget {
 }
 
 class YourWidget extends StatelessWidget {
+  int totalKehadiran = 0;
+  final List<Karyawan> daftarKaryawan = Karyawan.daftarKaryawan;
+
+  YourWidget() {
+    for (var karyawan in daftarKaryawan) {
+      totalKehadiran += karyawan.absensi.length;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -78,7 +88,7 @@ class YourWidget extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(2.0),
             child: Text(
-              'Analisis Kehadiran',
+              'Analisis Karyawan',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -103,7 +113,7 @@ class YourWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Total Kehadiran',
+                            'Karyawan Tetap',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
@@ -118,7 +128,14 @@ class YourWidget extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: Text(
-                                  '30',
+                                  // totalKehadiran.toString(),
+                                  // daftarKaryawan.length.toString,
+                                  // daftarKaryawan.where((k) => k is KaryawanKontrak).length.toString(),
+                                  // daftarKaryawan.where((k) => k is KaryawanMagang).length.toString(),
+                                  daftarKaryawan
+                                      .where((k) => k is KaryawanTetap)
+                                      .length
+                                      .toString(),
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
@@ -160,7 +177,7 @@ class YourWidget extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: 10.0),
                               child: Text(
-                                '10',
+                                daftarKaryawan.length.toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
@@ -208,7 +225,10 @@ class YourWidget extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: Text(
-                                  '12',
+                                  daftarKaryawan
+                                      .where((k) => k is KaryawanMagang)
+                                      .length
+                                      .toString(),
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
@@ -249,7 +269,10 @@ class YourWidget extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: Text(
-                                  '21',
+                                  daftarKaryawan
+                                      .where((k) => k is KaryawanKontrak)
+                                      .length
+                                      .toString(),
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,

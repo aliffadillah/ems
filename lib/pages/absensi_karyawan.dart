@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/login_page.dart';
+import 'package:pbo_ems/models/karyawan.dart';
 
 class AbsensiKaryawan extends StatelessWidget {
   const AbsensiKaryawan({Key? key}) : super(key: key);
@@ -114,131 +115,19 @@ class EmployeeList extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Container(
-                      width: 328,
-                      height: 113,
-                      decoration: ShapeDecoration(
-                        color: Color(0xf000000),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(padding: EdgeInsets.only(top: 20.0)),
-                          Container(
-                            width: 284,
-                            height: 30,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(11),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Muhammad Alif Fadillah',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.26),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Container(
-                            width: 284,
-                            height: 30,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(11),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  '24-12-2023 11:12:50',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.26),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Container(
-                      width: 328,
-                      height: 113,
-                      decoration: ShapeDecoration(
-                        color: Color(0xf000000),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(padding: EdgeInsets.only(top: 20.0)),
-                          Container(
-                            width: 284,
-                            height: 30,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(11),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Fauzi Niko Allianzah',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.26),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Container(
-                            width: 284,
-                            height: 30,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(11),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  '24-12-2023 11:12:50',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.26),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container
+                    ...Karyawan.daftarKaryawan.map((karyawan) {
+                      List<Widget> daftar = [];
+                      for (var absen in karyawan.absensi) {
+                        daftar.addAll([
+                          absenContainer(karyawan.nama, absen),
+                          SizedBox(height: 20.0),
+                        ]);
+                      }
+                      return Column(
+                        children: daftar,
+                      );
+                    }).toList()
                   ],
                 ),
               ],
@@ -246,6 +135,71 @@ class EmployeeList extends StatelessWidget {
           ],
         )
       ],
+    );
+  }
+
+  Widget absenContainer(String nama, String absen) {
+    return Container(
+      width: 328,
+      height: 113,
+      decoration: ShapeDecoration(
+        color: Color(0xf000000),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      child: Column(
+        children: [
+          Padding(padding: EdgeInsets.only(top: 20.0)),
+          Container(
+            width: 284,
+            height: 30,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(11),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  nama,
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.26),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10.0),
+          Container(
+            width: 284,
+            height: 30,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(11),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  absen,
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.26),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
