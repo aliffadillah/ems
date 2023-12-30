@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/edit_data_karyawan.dart';
+import 'package:pbo_ems/models/karyawan.dart';
 
 class DaftarKaryawan extends StatelessWidget {
   @override
@@ -89,9 +90,15 @@ class DaftarKaryawan extends StatelessWidget {
   }
 }
 
-class EmployeeList extends StatelessWidget {
+class EmployeeList extends StatefulWidget {
   final BuildContext context;
   EmployeeList(this.context);
+
+  @override
+  State<EmployeeList> createState() => _EmployeeListState();
+}
+
+class _EmployeeListState extends State<EmployeeList> {
   final TextStyle _employeeDetailStyle = TextStyle(
     fontWeight: FontWeight.w600,
     fontFamily: 'Poppins',
@@ -122,14 +129,16 @@ class EmployeeList extends StatelessWidget {
               ),
             ),
           ),
-          buildEmployeeCard(),
+          ...Karyawan.daftarKaryawan
+              .map((karyawan) => buildEmployeeCard(karyawan))
+              .toList(),
           SizedBox(height: 16),
         ],
       ),
     );
   }
 
-  Widget buildEmployeeCard() {
+  Widget buildEmployeeCard(Karyawan karyawan) {
     return Column(
       children: [
         Row(
@@ -139,7 +148,7 @@ class EmployeeList extends StatelessWidget {
               color: Colors.grey[200],
               child: SizedBox(
                 width: 330,
-                height: 230,
+                height: 205,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
@@ -155,7 +164,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': John Doe',
+                              ': ${karyawan.nama}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -171,7 +180,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': 123456',
+                              ': ${karyawan.getId}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -187,7 +196,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Tetap',
+                              ': ${karyawan is KaryawanKontrak ? "Kontrak" : karyawan is KaryawanMagang ? "Magang" : karyawan is KaryawanTetap ? "Tetap" : ""}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -203,7 +212,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Laki-Laki',
+                              ': ${karyawan.jenisKelamin}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -219,23 +228,7 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': 40 Jam',
-                              style: _employeeDetailStyle,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              'Hari Kerja',
-                              style: _employeeDetailStyle,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              ': 3 Hari',
+                              ': ${karyawan.jamKerja}',
                               style: _employeeDetailStyle,
                             ),
                           ),
@@ -251,14 +244,14 @@ class EmployeeList extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              ': Rp. 12.000.000',
+                              ': Rp. ${karyawan.gajiPerjam * karyawan.jamKerja}',
                               style: _employeeDetailStyle,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
-                      buildElevatedButtons(),
+                      SizedBox(height: 16),
+                      buildElevatedButtons(karyawan),
                     ],
                   ),
                 ),
@@ -266,18 +259,24 @@ class EmployeeList extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 19),
       ],
     );
   }
 
-  Widget buildElevatedButtons() {
+  Widget buildElevatedButtons(Karyawan karyawan) {
     return Row(
       children: [
         Expanded(
           child: Container(
             width: 200, // Set the fixed width
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  Karyawan.daftarKaryawan
+                      .removeWhere((k) => k.getId == karyawan.getId);
+                });
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -308,8 +307,9 @@ class EmployeeList extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EditDataKaryawan()),
+                  widget.context,
+                  MaterialPageRoute(
+                      builder: (context) => EditDataKaryawan(karyawan)),
                 );
               },
               child: Row(

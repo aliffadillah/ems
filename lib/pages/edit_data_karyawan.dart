@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
+import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
+import 'package:pbo_ems/models/karyawan.dart';
 
 class EditDataKaryawan extends StatelessWidget {
+  final Karyawan karyawan;
+  EditDataKaryawan(this.karyawan, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -83,20 +88,23 @@ class EditDataKaryawan extends StatelessWidget {
             ),
           ],
         ),
-        body: PageEditKaryawan(),
+        body: PageEditKaryawan(karyawan),
       ),
     );
   }
 }
 
 class PageEditKaryawan extends StatefulWidget {
-  const PageEditKaryawan({super.key});
+  final Karyawan karyawan;
+  const PageEditKaryawan(this.karyawan, {super.key});
 
   @override
   State<PageEditKaryawan> createState() => _PageEditKaryawanState();
 }
 
 class _PageEditKaryawanState extends State<PageEditKaryawan> {
+  TextEditingController namaController = TextEditingController();
+  TextEditingController jamController = TextEditingController();
   String? jenisKelaminUpdate;
   String? jabatanUpdate;
 
@@ -134,7 +142,7 @@ class _PageEditKaryawanState extends State<PageEditKaryawan> {
                     color: Colors.grey[200],
                     child: SizedBox(
                       width: 360,
-                      height: 500,
+                      height: 430,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -157,6 +165,7 @@ class _PageEditKaryawanState extends State<PageEditKaryawan> {
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: TextField(
+                                controller: namaController,
                                 decoration: InputDecoration(
                                   labelText: 'Edit Nama Karyawan',
                                   border: OutlineInputBorder(),
@@ -326,11 +335,50 @@ class _PageEditKaryawanState extends State<PageEditKaryawan> {
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
+                                if (namaController.text.isEmpty ||
+                                    jenisKelaminUpdate == null ||
+                                    jabatanUpdate == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Silahkan isi data'),
+                                    ),
+                                  );
+                                } else {
+                                  late Karyawan newKaryawan;
+                                  switch (jabatanUpdate) {
+                                    case 'Tetap':
+                                      newKaryawan = KaryawanTetap(
+                                        widget.karyawan.getId,
+                                        namaController.text,
+                                        jenisKelaminUpdate!,
+                                      );
+                                      break;
+                                    case 'Kontrak':
+                                      newKaryawan = KaryawanKontrak(
+                                        widget.karyawan.getId,
+                                        namaController.text,
+                                        jenisKelaminUpdate!,
+                                      );
+                                      break;
+                                    case 'Magang':
+                                      newKaryawan = KaryawanMagang(
+                                        widget.karyawan.getId,
+                                        namaController.text,
+                                        jenisKelaminUpdate!,
+                                      );
+                                      break;
+                                    default:
+                                  }
+                                  int index = Karyawan.daftarKaryawan
+                                      .indexWhere((element) =>
+                                          element.getId == newKaryawan.getId);
+                                  Karyawan.daftarKaryawan[index] = newKaryawan;
+                                  Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            AdminDashboard()));
+                                        builder: (context) => DaftarKaryawan()),
+                                  );
+                                }
                               },
                               child: Text('Edit Data Karyawan'),
                               style: ElevatedButton.styleFrom(
