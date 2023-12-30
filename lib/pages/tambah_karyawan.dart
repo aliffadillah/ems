@@ -335,14 +335,12 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                                 if (namaController.text.isEmpty ||
                                     jenisKelaminValue == null ||
                                     jabatanValue == null) {
-                                  // Show a snackbar or any other feedback to inform the user to fill in all data
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text('Silahkan isi data'),
                                     ),
                                   );
                                 } else {
-                                  // Data is filled, proceed with adding the employee
                                   late Karyawan karyawan;
                                   switch (jabatanValue) {
                                     case 'Tetap':

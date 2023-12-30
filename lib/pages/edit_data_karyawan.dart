@@ -338,14 +338,12 @@ class _PageEditKaryawanState extends State<PageEditKaryawan> {
                                 if (namaController.text.isEmpty ||
                                     jenisKelaminUpdate == null ||
                                     jabatanUpdate == null) {
-                                  // Show a snackbar or any other feedback to inform the user to fill in all data
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text('Silahkan isi data'),
                                     ),
                                   );
                                 } else {
-                                  // Data is filled, proceed with editing the employee
                                   late Karyawan newKaryawan;
                                   switch (jabatanUpdate) {
                                     case 'Tetap':
