@@ -35,7 +35,10 @@ class DaftarKaryawan extends StatelessWidget {
               child: IconButton(
                 icon: Icon(Icons.arrow_back_ios_outlined),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AdminDashboard()),
+                  );
                 },
               ),
             ),

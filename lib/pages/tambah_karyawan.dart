@@ -338,6 +338,7 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text('Silahkan isi data'),
+                                      duration: Duration(seconds: 2),
                                     ),
                                   );
                                 } else {
