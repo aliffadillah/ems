@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "533916337351",
+    "project_id": "pbo-ems",
+    "storage_bucket": "pbo-ems.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533916337351:android:4a9e294ce2dbd58925eae2",
+        "android_client_info": {
+          "package_name": "com.example.pbo_ems"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0jQznxC6syr74D0l-6jkfzX3OZnsMIWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

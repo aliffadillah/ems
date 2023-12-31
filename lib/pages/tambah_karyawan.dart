@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pbo_ems/models/karyawan.dart';
@@ -6,93 +8,106 @@ import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/daftar_karyawan.dart';
 import 'package:pbo_ems/pages/login_page.dart';
 
-class TambahKaryawan extends StatelessWidget {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(65.0),
-          child: AppBar(
-            backgroundColor: Colors.grey[400],
-            leading: Container(
-              margin: EdgeInsets.all(8.0),
-              padding: EdgeInsets.all(0.0),
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios_outlined),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+      home: TambahKaryawan(),
+    );
+  }
+}
+
+class TambahKaryawan extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(65.0),
+        child: AppBar(
+          backgroundColor: Colors.grey[400],
+          leading: Container(
+            margin: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(0.0),
+            width: 50.0,
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(5.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios_outlined),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => AdminDashboard()),
-                  );
-                },
-                child: SvgPicture.asset('assets/icons/home.svg'),
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
-                  );
-                },
-                child: SvgPicture.asset('assets/icons/vector.svg'),
-              ),
-              label: 'Document',
-            ),
-            BottomNavigationBarItem(
-              icon: GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: SvgPicture.asset('assets/icons/login.svg')),
-              label: 'Logout',
-            ),
-          ],
-        ),
-        body: MenambahkanKaryawan(),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AdminDashboard()),
+                );
+              },
+              child: SvgPicture.asset('assets/icons/home.svg'),
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
+                );
+              },
+              child: SvgPicture.asset('assets/icons/vector.svg'),
+            ),
+            label: 'Document',
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                child: SvgPicture.asset('assets/icons/login.svg')),
+            label: 'Logout',
+          ),
+        ],
+      ),
+      body: MenambahkanKaryawan(),
     );
   }
 }
 
 class MenambahkanKaryawan extends StatefulWidget {
-  const MenambahkanKaryawan({super.key});
+  const MenambahkanKaryawan({Key? key});
 
   @override
   State<MenambahkanKaryawan> createState() => _MenambahkanKaryawanState();
@@ -341,37 +356,22 @@ class _MenambahkanKaryawanState extends State<MenambahkanKaryawan> {
                                     ),
                                   );
                                 } else {
-                                  late Karyawan karyawan;
-                                  switch (jabatanValue) {
-                                    case 'Tetap':
-                                      karyawan = KaryawanTetap(
-                                        Karyawan.id,
-                                        namaController.text,
-                                        jenisKelaminValue!,
-                                      );
-                                      break;
-                                    case 'Kontrak':
-                                      karyawan = KaryawanKontrak(
-                                        Karyawan.id,
-                                        namaController.text,
-                                        jenisKelaminValue!,
-                                      );
-                                      break;
-                                    case 'Magang':
-                                      karyawan = KaryawanMagang(
-                                        Karyawan.id,
-                                        namaController.text,
-                                        jenisKelaminValue!,
-                                      );
-                                      break;
-                                    default:
-                                  }
-                                  Karyawan.daftarKaryawan.add(karyawan);
-                                  Karyawan.id++;
+                                  // Save data to Firestore
+                                  CollectionReference karyawanCollection =
+                                      FirebaseFirestore.instance
+                                          .collection('karyawan');
+                                  karyawanCollection.add({
+                                    'nama': namaController.text,
+                                    'jenisKelamin': jenisKelaminValue!,
+                                    'jabatan': jabatanValue!,
+                                  });
+
+                                  // Navigate to DaftarKaryawan page or handle as needed
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => DaftarKaryawan()),
+                                      builder: (context) => DaftarKaryawan(),
+                                    ),
                                   );
                                 }
                               },
