@@ -121,37 +121,52 @@ class _AddEmployeeState extends State<AddEmployee> {
                         ),
                         SizedBox(height: 20),
                         Center(
-                          child: ElevatedButton(
-                            onPressed: () {
+                            child: ElevatedButton(
+                          onPressed: () {
+                            if (idController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Silahkan isi data'),
+                                  duration: Duration(seconds: 2),
+                                ),
+                              );
+                            } else {
                               Karyawan? absenKaryawan = Karyawan.daftarKaryawan
                                   .firstWhereOrNull((karyawan) =>
                                       karyawan.getId.toString() ==
                                       idController.text);
-                              if (absenKaryawan != null) {
-                                final now = DateTime.now();
 
+                              if (absenKaryawan == null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('ID tidak ditemukan'),
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                              } else {
+                                final now = DateTime.now();
                                 final formattedDate =
                                     '${now.day}-${now.month}-${now.year} ${now.hour}:${now.minute}:${now.second}';
-
                                 absenKaryawan.absensi.add(formattedDate);
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()),
+                                );
                               }
-                            },
-                            child: Text('Tambahkan Kehadiran'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
-                              foregroundColor: Colors.white,
-                              fixedSize: Size(190, 42),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                side: BorderSide(color: Colors.black),
-                              ),
+                            }
+                          },
+                          child: Text('Tambahkan Kehadiran'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.white,
+                            fixedSize: Size(190, 42),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(color: Colors.black),
                             ),
                           ),
-                        ),
+                        )),
                       ],
                     ),
                   ),
