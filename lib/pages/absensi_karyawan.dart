@@ -89,32 +89,39 @@ class EmployeeList extends StatelessWidget {
             ),
           ),
         ),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    // Container
-                    ...Karyawan.daftarKaryawan.map((karyawan) {
-                      List<Widget> daftar = [];
-                      for (var absen in karyawan.absensi) {
-                        daftar.addAll([
-                          absenContainer(karyawan.nama, absen),
-                          SizedBox(height: 20.0),
-                        ]);
-                      }
-                      return Column(
-                        children: daftar,
-                      );
-                    }).toList()
-                  ],
-                ),
-              ],
-            ),
-          ],
-        )
+        // Check if there are any attendance records for any employee, display image otherwise
+        Karyawan.daftarKaryawan.any((karyawan) => karyawan.absensi.isNotEmpty)
+            ? Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          // Container
+                          ...Karyawan.daftarKaryawan.map((karyawan) {
+                            List<Widget> daftar = [];
+                            for (var absen in karyawan.absensi) {
+                              daftar.addAll([
+                                absenContainer(karyawan.nama, absen),
+                                SizedBox(height: 20.0),
+                              ]);
+                            }
+                            return Column(
+                              children: daftar,
+                            );
+                          }).toList()
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : Image.network(
+                'https://res.cloudinary.com/dwm0tvqar/image/upload/v1704041617/pbo-ta/6FBB7997-843D-45FB-BCEF-DB7F0D1BA0B4_vwiu07.jpg',
+                height: 500,
+                width: 500,
+              ),
       ],
     );
   }
