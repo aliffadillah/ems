@@ -89,7 +89,6 @@ class EmployeeList extends StatelessWidget {
             ),
           ),
         ),
-        // Check if there are any attendance records for any employee, display image otherwise
         Karyawan.daftarKaryawan.any((karyawan) => karyawan.absensi.isNotEmpty)
             ? Column(
                 children: [
@@ -98,7 +97,6 @@ class EmployeeList extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          // Container
                           ...Karyawan.daftarKaryawan.map((karyawan) {
                             List<Widget> daftar = [];
                             for (var absen in karyawan.absensi) {
@@ -118,7 +116,7 @@ class EmployeeList extends StatelessWidget {
                 ],
               )
             : Image.network(
-                'https://res.cloudinary.com/dwm0tvqar/image/upload/v1704041617/pbo-ta/6FBB7997-843D-45FB-BCEF-DB7F0D1BA0B4_vwiu07.jpg',
+                'https://firebasestorage.googleapis.com/v0/b/flutter-pbo.appspot.com/o/2.png?alt=media&token=f21998b1-0bfd-4a37-9862-fd99d1098334',
                 height: 500,
                 width: 500,
               ),

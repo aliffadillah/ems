@@ -132,13 +132,12 @@ class _EmployeeListState extends State<EmployeeList> {
               ),
             ),
           ),
-          // Check if the list is empty, display an image
           Karyawan.daftarKaryawan.isEmpty
               ? Image.network(
-                  'https://res.cloudinary.com/dwm0tvqar/image/upload/v1704040791/pbo-ta/71EB65FF-5F13-4EBE-88B6-D40CDE5798C5_xotzvj.jpg',
+                  'https://firebasestorage.googleapis.com/v0/b/flutter-pbo.appspot.com/o/1.png?alt=media&token=12e69b00-cf67-4549-a62a-73d9dfcfa702',
                   height: 500,
                   width: 500,
-                ) // Replace 'path_to_your_image' with the actual path
+                )
               : Column(
                   children: Karyawan.daftarKaryawan
                       .map((karyawan) => buildEmployeeCard(karyawan))
@@ -281,7 +280,7 @@ class _EmployeeListState extends State<EmployeeList> {
       children: [
         Expanded(
           child: Container(
-            width: 200, // Set the fixed width
+            width: 200,
             child: ElevatedButton(
               onPressed: () {
                 setState(() {
