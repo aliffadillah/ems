@@ -116,7 +116,7 @@ class EmployeeList extends StatelessWidget {
                 ],
               )
             : Image.network(
-                'https://firebasestorage.googleapis.com/v0/b/flutter-pbo.appspot.com/o/2.png?alt=media&token=f21998b1-0bfd-4a37-9862-fd99d1098334',
+                'https://res.cloudinary.com/dmu8oxicn/image/upload/v1704250120/2_e43ukw.png',
                 height: 500,
                 width: 500,
               ),

@@ -136,7 +136,7 @@ class _EmployeeListState extends State<EmployeeList> {
           ),
           Karyawan.daftarKaryawan.isEmpty
               ? Image.network(
-                  'https://firebasestorage.googleapis.com/v0/b/flutter-pbo.appspot.com/o/1.png?alt=media&token=12e69b00-cf67-4549-a62a-73d9dfcfa702',
+                  'https://res.cloudinary.com/dmu8oxicn/image/upload/v1704250208/1_hjnes2.png',
                   height: 500,
                   width: 500,
                 )
