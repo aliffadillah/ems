@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pbo_ems/pages/absensi_karyawan.dart';
 import 'package:pbo_ems/pages/admin_dashboard.dart';
 import 'package:pbo_ems/pages/edit_data_karyawan.dart';
 import 'package:pbo_ems/models/karyawan.dart';
+import 'package:pbo_ems/pages/login_page.dart';
 
 class DaftarKaryawan extends StatelessWidget {
   @override
@@ -66,7 +68,7 @@ class DaftarKaryawan extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => AdminDashboard()),
+                    MaterialPageRoute(builder: (context) => AbsensiKaryawan()),
                   );
                 },
                 child: SvgPicture.asset('assets/icons/vector.svg'),
@@ -78,7 +80,7 @@ class DaftarKaryawan extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => AdminDashboard()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 child: SvgPicture.asset('assets/icons/login.svg'),
