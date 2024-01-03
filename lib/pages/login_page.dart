@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Image.network(
-                  'https://res.cloudinary.com/dwm0tvqar/image/upload/v1702996494/pbo-ta/hibfzogkfzkjtgs7eytz.png',
+                  'https://firebasestorage.googleapis.com/v0/b/flutter-pbo.appspot.com/o/Programmer-amico.png?alt=media&token=8ff1bf00-53da-4c2e-a3c7-2dfad75ead5d',
                   width: 300,
                   height: 300,
                 ),
